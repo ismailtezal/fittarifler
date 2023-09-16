@@ -1,7 +1,7 @@
 import { useSession } from 'next-auth/react'
 import { CreatePost } from '~/components/CreatePost'
 
-const createPostPage = () => {
+export default function createPostPage() {
   const session = useSession()
   
   if (session.status === "unauthenticated") return
@@ -12,5 +12,3 @@ const createPostPage = () => {
     </div>
   )
 }
-
-export default createPostPage
