@@ -34,7 +34,6 @@ export function CreatePost() {
 
 
     const createPost = api.posts.create.useMutation({
-
         onSuccess: () => {
             router.push("/blog")
         }
@@ -43,7 +42,6 @@ export function CreatePost() {
     const onSubmit = (values: z.infer<typeof formSchema>) => {
     try {
          createPost.mutate(values);
-        router.push("/blog");
     } catch (error) {
     
     }
