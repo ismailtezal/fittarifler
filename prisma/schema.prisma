@@ -40,6 +40,17 @@ model Session {
     @@index([userId])
 }
 
+model Post {
+    id        String   @id @default(cuid())
+    title     String
+    content   String
+    author    User     @relation(fields: [authorId], references: [id], onDelete: Cascade)
+    authorId  String
+    createdAt DateTime @default(now())
+
+    @@index([authorId])
+}
+
 model User {
     id            String    @id @default(cuid())
     name          String?
@@ -48,6 +59,7 @@ model User {
     image         String?
     accounts      Account[]
     sessions      Session[]
+    Post          Post[]
 }
 
 model VerificationToken {
