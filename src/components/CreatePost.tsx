@@ -16,7 +16,6 @@ import {
 import { Input } from "~/components/ui/input"
 import { Textarea } from "./ui/textarea"
 import { api } from "~/utils/api"
-import { useSession } from "next-auth/react"
 
 
 const formSchema = z.object({
@@ -30,21 +29,26 @@ const formSchema = z.object({
 
 
 
-export async function CreatePost() {
-    const session = useSession()
+export function CreatePost() {
     const router = useRouter()
 
 
-    const createPost = await api.posts.create.useMutation({
+    const createPost =  api.posts.create.useMutation({
 
         onSuccess: () => {
             router.push("/blog")
         }
     })
 
-    const onSubmit = (values: z.infer<typeof formSchema>) => {
-        createPost.mutate(values)
+    const onSubmit = async (values: z.infer<typeof formSchema>) => {
+        try {
+            await createPost.mutate(values);
+            router.push("/blog");
+        } catch (error) {
+            
+        }
     };
+    
 
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
