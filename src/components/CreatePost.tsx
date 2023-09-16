@@ -33,22 +33,22 @@ export function CreatePost() {
     const router = useRouter()
 
 
-    const createPost =  api.posts.create.useMutation({
+    const createPost = api.posts.create.useMutation({
 
         onSuccess: () => {
             router.push("/blog")
         }
     })
 
-    const onSubmit = async (values: z.infer<typeof formSchema>) => {
-        try {
-            await createPost.mutate(values);
-            router.push("/blog");
-        } catch (error) {
-            
-        }
-    };
+    const onSubmit = (values: z.infer<typeof formSchema>) => {
+    try {
+         createPost.mutate(values);
+        router.push("/blog");
+    } catch (error) {
     
+    }
+};
+
 
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
