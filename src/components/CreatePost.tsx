@@ -30,13 +30,12 @@ const formSchema = z.object({
 
 
 
-export function CreatePost() {
+export async function CreatePost() {
     const session = useSession()
     const router = useRouter()
 
-    if (session.status === "unauthenticated") return
 
-    const createPost = api.posts.create.useMutation({
+    const createPost = await api.posts.create.useMutation({
 
         onSuccess: () => {
             router.push("/blog")
