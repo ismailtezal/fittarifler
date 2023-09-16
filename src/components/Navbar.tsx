@@ -17,6 +17,7 @@ export const Navbar: React.FC = () => {
                     Fit Tarifler
                 </li>
                 <li className="flex gap-2">
+                    {session.data?.user ? <Button variant={"outline"} onClick={() => router.push("/blog")}>Blog</Button> : null}
                     {session.data?.user ? <Button variant={"outline"} onClick={() => router.push("/blog/create-post")}>Post Oluştur</Button> : null}
                     {!session.data?.user ? <Button onClick={() => signIn()}>Giriş Yap</Button> : <Button onClick={() => signOut()}>Çıkış Yap</Button> }
                 </li>
