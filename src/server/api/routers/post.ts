@@ -21,17 +21,27 @@ export const postRouter = createTRPCRouter({
                 throw new Error("Bir hata oluştu.");
             }
         }),
-    getPostsByUserId: publicProcedure.query(async ({ ctx }) => { 
+    getPostsByUserId: publicProcedure.query(async ({ ctx }) => {
         try {
             const posts = await ctx.db.post.findMany({
-                where:{
-                    authorId:ctx.session?.user.id
+                where: {
+                    authorId: ctx.session?.user.id
                 },
-                orderBy:{createdAt:"desc"}
+                orderBy: { createdAt: "desc" }
             });
             return posts;
         } catch (error) {
-            
+
+        }
+    }),
+    getAllPosts: publicProcedure.query(async ({ ctx }) => {
+        try {
+            const posts = await ctx.db.post.findMany({
+                orderBy: { createdAt: "desc" }
+            })
+            return posts
+        } catch (error) {
+
         }
     })
 })

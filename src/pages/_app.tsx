@@ -6,7 +6,6 @@ import { api } from "~/utils/api";
 
 import "~/styles/globals.css";
 import { Navbar } from "~/components/Navbar";
-import { Inter } from "next/font/google"
 
 
 

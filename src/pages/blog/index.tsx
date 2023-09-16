@@ -5,7 +5,7 @@ import { api } from "~/utils/api";
 const inter = Inter({ subsets: ['latin'] });
 
 export default function Blogs() {
-  const { data } = api.posts.getPostsByUserId.useQuery();
+  const { data } = api.posts.getAllPosts.useQuery();
 
   return (
     <div style={inter.style} className="p-4">
