@@ -18,7 +18,7 @@ export default function Blogs() {
             >
               <div className="p-4 flex flex-col justify-center">
                 <div className="h-48 bg-green-300 mb-1 rounded-md flex items-center justify-center">
-                  Onuru Sikim
+                  Yemek Resmi
                 </div>
                 <div className="font-extrabold text-xl mb-2">{post.title}</div>
                 <Separator className="bg-green-200" />
