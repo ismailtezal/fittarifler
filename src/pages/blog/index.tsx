@@ -3,7 +3,6 @@ import Link from "next/link";
 import { Separator } from "~/components/ui/separator";
 import { api } from "~/utils/api";
 
-const inter = Inter({ subsets: ['latin'] });
 
 export default function Blogs() {
   const { data } = api.posts.getAllPosts.useQuery();
@@ -16,14 +15,13 @@ export default function Blogs() {
   });
 
   return (
-    <div style={inter.style} className="p-4">
+    <div className="p-4">
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
         {filteredData?.map((post) => {
           return (
-            <Link href={`blog/${post.id}`}>
+            <Link key={post.id} href={`blog/${post.id}`}>
               <div
                 className="hover:bg-green-500 shadow-md hover:cursor-pointer transition-colors duration-400 bg-green-400 rounded-md"
-                key={post.id}
               >
                 <div className="p-4 flex flex-col justify-center">
                   <div className="h-48 bg-green-300 mb-1 rounded-md flex items-center justify-center ">

@@ -36,11 +36,11 @@ export const postRouter = createTRPCRouter({
     }),
     getPostById: publicProcedure
         .input(z.object({
-            id:z.string().optional()
+            id: z.string().optional()
         }))
         .query(async ({ ctx, input }) => {
             try {
-                const post = await ctx.db.post.findUniqueOrThrow({
+                const post = await ctx.db.post.findFirst({
                     where: {
                         id: input.id
                     }
