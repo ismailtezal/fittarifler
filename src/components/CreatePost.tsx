@@ -65,9 +65,9 @@ export function CreatePost() {
                     name="title"
                     render={({ field }) => (
                         <FormItem>
-                            <FormLabel>Title</FormLabel>
+                            <FormLabel>Başlık</FormLabel>
                             <FormControl>
-                                <Input placeholder="title" {...field} />
+                                <Input placeholder="Başlık" {...field} />
                             </FormControl>
                             <FormMessage />
                         </FormItem>
@@ -78,9 +78,9 @@ export function CreatePost() {
                     name="content"
                     render={({ field }) => (
                         <FormItem>
-                            <FormLabel>Content</FormLabel>
+                            <FormLabel>İçerik</FormLabel>
                             <FormControl>
-                                <Textarea placeholder="content" {...field} />
+                                <Textarea placeholder="İçerik" {...field} />
                             </FormControl>
                             <FormMessage />
                         </FormItem>
