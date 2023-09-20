@@ -1,4 +1,4 @@
-import { string, z } from "zod"
+import { z } from "zod"
 import { createTRPCRouter, protectedProcedure, publicProcedure } from "../trpc"
 
 
@@ -7,11 +7,13 @@ export const postRouter = createTRPCRouter({
     create: protectedProcedure
         .input(z.object({
             content: z.string(),
+            ingredients:z.array(z.string()),
+            howtomake:z.array(z.string()),
             title: z.string()
         }))
         .mutation(async ({ input: { title, content }, ctx }) => {
             try {
-                const post = await ctx.db.post.create({
+                const post = await ctx.db.post.create(  {
                     data: { title, content, authorId: ctx.session.user.id },
                 });
                 return post;

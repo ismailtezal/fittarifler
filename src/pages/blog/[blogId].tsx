@@ -1,5 +1,6 @@
 import { useRouter } from 'next/router';
 import { useMemo } from 'react';
+import { Separator } from '~/components/ui/separator';
 import { api } from '~/utils/api';
 
 const Blog = () => {
@@ -17,8 +18,14 @@ const Blog = () => {
   return (
     <div>
       {data && (
-        <div>
-          <h1 className='text-4xl font-extrabold'>{data.title}</h1>
+        <div className='flex flex-col gap-5 p-5'>
+          <div className='w-full bg-green-300 ring-4 ring-green-600 flex justify-center items-center h-96 border'>Yemek Resmi</div>
+          <div><Separator></Separator></div>
+          <div><h1 className='text-4xl font-extrabold'>{data.title}</h1></div>
+          <div>
+            {data.title} Malzemeleri
+            
+          </div>
         </div>
       )}
     </div>

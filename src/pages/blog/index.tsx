@@ -1,4 +1,3 @@
-import { Inter } from "next/font/google";
 import Link from "next/link";
 import { Separator } from "~/components/ui/separator";
 import { api } from "~/utils/api";

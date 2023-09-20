@@ -24,6 +24,12 @@ const formSchema = z.object({
     }).max(30,{message: "Post başlığı en fazla 30 karakterde olmalıdır!",}),
     content: z.string().min(5, {
         message: "Post yazısı en az 5 karakterde olmalıdır!"
+    }),
+    ingredients: z.array(z.string()).min(2,{
+        message: "En az 2 adım içermelidir"
+    }),
+    howtomake: z.array(z.string()).min(2,{
+        message: "En az 2 adım içermelidir"
     })
 })
 
@@ -52,7 +58,9 @@ export function CreatePost() {
         resolver: zodResolver(formSchema),
         defaultValues: {
             title: "",
-            content: ""
+            content: "",
+            ingredients:["",""],
+            howtomake:["",""],
         },
     })
 
